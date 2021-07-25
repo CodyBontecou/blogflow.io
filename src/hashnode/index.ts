@@ -1,21 +1,16 @@
 const axios = require('axios')
 
-export function createHashnodePost(
-  canonicalUrl: string,
-  title: string,
-  content: any,
-  tags: string[]
-) {
+export function createHashnodePost(grayMatter) {
   const url: string = 'https://api.hashnode.com'
   const data: any = JSON.stringify({
     query:
       'mutation createStory($input: CreateStoryInput!){ createStory(input: $input){ code success message } }',
     variables: {
       input: {
-        title: title,
-        contentMarkdown: content,
-        isRepublished: { originalArticleURL: canonicalUrl },
-        tags: tags,
+        title: grayMatter.title,
+        contentMarkdown: grayMatter.content,
+        isRepublished: { originalArticleURL: grayMatter.canonicalUrl },
+        tags: grayMatter.tags,
       },
     },
   })
