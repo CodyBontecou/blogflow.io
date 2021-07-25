@@ -9,5 +9,5 @@
     "allowJs": true,
     "typeRoots": ["./node_modules/@types"]
   },
-  "include": ["./db/**/*", "./src/**/*"]
+  "include": ["./db/**/*", "./src/**/*", "test/medium.test.ts"]
 }
