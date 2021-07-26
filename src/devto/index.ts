@@ -1,14 +1,24 @@
 const axios = require('axios')
 
-export function createDevToPost(grayMatter) {
+export function createDevToPost({
+  title,
+  content,
+  canonicalUrl,
+  tags,
+}: {
+  title: string
+  content: string
+  canonicalUrl: string
+  tags: string[]
+}) {
   const url: string = 'https://dev.to/api/articles'
   const data: object = {
     article: {
-      title: grayMatter.title,
+      title: title,
       published: true,
-      body_markdown: grayMatter.content,
-      tags: grayMatter.tags,
-      canonicalUrl: grayMatter.canonicalUrl,
+      body_markdown: content,
+      tags: tags,
+      canonicalUrl: canonicalUrl,
     },
   }
   const config: object = { headers: { 'api-key': process.env.DEV_TO_TOKEN } }
