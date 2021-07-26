@@ -22,17 +22,22 @@ export function postLink(title: string, link: string, subreddit: string) {
   })
 }
 
-export const url =
-  'https://codybontecou.com/mocking-api-with-msw-and-typescript.html'
-export const title =
-  'Mocking an API request with Mock Service Worker and Typescript'
-export const subreddits = [
-  'webdev',
-  'learnjavascript',
-  'typescript',
-  'programming',
-  'webdevtutorials',
-  'node',
-]
-
-// subreddits.forEach(subreddit => postLink(title, url, subreddit))
+export function createRedditPosts({
+  title,
+  content,
+  canonicalUrl,
+}: {
+  title: string
+  content: string
+  canonicalUrl: string
+}) {
+  const subreddits = [
+    'webdev',
+    'learnjavascript',
+    'typescript',
+    'programming',
+    'webdevtutorials',
+    'node',
+  ]
+  subreddits.forEach(subreddit => postLink(title, canonicalUrl, subreddit))
+}
